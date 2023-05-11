@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .container{
+            width: 100%;
+            height:100vh;
+            color: #fff;
+            text-align: center;
+            background: radial-gradient(ellipse at center,#0a2e38 0%,#000000 70%);
+        }
+        .container h2{
+            font-weight: 300;
+            font-size: 30px;
+            padding-top: 50px;
+            margin: 0;
+        }
+        .font{
+            font-size: 50px;
+        }
+        h1{
+            margin: 0;
+            padding-top: 0;
+        }
+         .clock{
+            color: #fff;
+            padding: 30px 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-shadow: 0 0 20px rgb(227, 227, 227);
+         }
+     </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="font">
+            <div class="clock">
+                <span id="hours">12</span>
+                <span>:</span>
+                <span id="minutes">60</span>
+                <span>:</span>
+                <span id="seconds">60</span>
+                <span id="am-or-pm">AM</span>
+                <h6 id="day">sunday</h6>
+        </div>
+    </h1>
+    </div>
+
+    <script>
+         function updateTime(){
+            var dateTime = new Date();
+            var hours=dateTime.getHours()
+            var minutes = dateTime.getMinutes();
+            var seconds=dateTime.getSeconds();
+            var day = "f";
+            var am_or_pm=document.getElementById("am-or-pm");
+
+            if(hours>12){
+                hours-=12;
+            }
+
+            if(hours>=12){
+                am_or_pm.innerHTML="PM"
+            }else{
+                am_or_pm.innerHTML="AM"
+            }
+            switch (new Date().getDay()) {
+                case 0:
+                    day = "Sunday";
+                    break;
+                case 1:
+                    day = "Monday";
+                    break;
+                case 2:
+                    day = "Tuesday";
+                    break;
+                case 3:
+                    day = "Wednesday";
+                    break;
+                case 4:
+                    day = "Thursday";
+                    break;
+                case 5:
+                    day = "Friday";
+                    break;
+                case 6:
+                    day = "Saturday";
+            }
+            document.getElementById("hours").innerHTML=hours;
+            document.getElementById("minutes").innerHTML=minutes;
+            document.getElementById("seconds").innerHTML=seconds;
+            document.getElementById("day").innerHTML=day;
+         }
+         setInterval(updateTime,1000)
+        
+    </script>
+</body>
+</html>
